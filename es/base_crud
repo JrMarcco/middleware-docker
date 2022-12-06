@@ -1,0 +1,85 @@
+# 获取健康状态
+GET _cluster/health
+
+# 获取节点信息
+GET _cat/nodes?v
+
+# 查看索引相关信息
+GET movies
+
+# 查看索引文档总数
+GET movies/_count
+
+# 查看前 10 条索引信息
+GET movies/_search 
+{}
+
+# create document. 自动生成 _id
+POST users/_doc
+{
+  "username": "auto gen",
+  "email": "demo@email.com"
+}
+
+# create document. 指定 _id（_id 已存在则报错）
+POST users/_doc/10?op_type=create
+{
+  "username": "id_10",
+  "email": "id_10@emailcom"
+}
+# create document. 指定 _id（_id 已存在则报错）
+PUT users/_create/11
+{
+  "username": "id_11",
+  "email": "id_11@emailcom"
+}
+
+# get document by _id
+GET users/_doc/10
+
+# index document. _id 重复则删除旧文档再写入新文档，_version + 1
+PUT users/_doc/10
+{
+  "username": "indexed_id_10",
+  "email": "indexed_id_10@emailcom"
+}
+
+# update ducument: add field ( add ), _version + 1.
+POST users/_update/10/
+{
+  "doc": {
+    "age": 18
+  }
+}
+
+# bulk
+POST _bulk
+{ "index": { "_index": "users", "_id": "12" } }
+{ "username": "indexed_id_12", "email": "indexed_id_12@emailcom", "age": 20 }
+{ "delete": { "_index": "users", "_id": "20" } }
+{ "update": { "_index": "users", "_id": "12" } }
+{ "doc": { "nickname": "foobar" } }
+
+# mget 
+GET /_mget
+{
+  "docs": [
+    {
+      "_index": "users",
+      "_id": "12"
+    }, {
+      "_index": "users", 
+      "_id": "13"
+    }, {
+      "_index": "movies",
+      "_id": "2"
+    }
+  ]
+}
+
+# msearch
+POST users/_msearch
+{}
+{ "query": { "match_all": {}}, "size": "1" }
+{ "index": "users" }
+{ "query": { "match_all": {}}, "size": "5" }

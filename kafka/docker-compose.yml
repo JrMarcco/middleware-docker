@@ -1,0 +1,73 @@
+version: "3.9"
+
+services:
+  kafka-1:
+    image: docker.io/bitnami/kafka:3.3
+    container_name: kafka-1
+    ports:
+      - ${PORT_1}:${PORT_1}
+    environment:
+      - KAFKA_ENABLE_KRAFT=true
+      - KAFKA_BROKER_ID=1
+      - KAFKA_KRAFT_CLUSTER_ID=${CLUSTER_ID}
+      - KAFKA_CFG_PROCESS_ROLES=broker,controller
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:${PORT_1},CONTROLLER://:${CONTROLLER_PROT_1}
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://${LISTENER_1}
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@${CONTROLLER_1},2@${CONTROLLER_2},3@${CONTROLLER_3}
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - BITNAMI_DEBUG=true
+    volumes:
+      - kafka_1_data:/bitnami/kafka
+    network_mode: host
+  
+  kafka-2:
+    image: docker.io/bitnami/kafka:3.3
+    container_name: kafka-2
+    ports:
+      - ${PORT_2}:${PORT_2}
+    environment:
+      - KAFKA_ENABLE_KRAFT=true
+      - KAFKA_BROKER_ID=2
+      - KAFKA_KRAFT_CLUSTER_ID=${CLUSTER_ID}
+      - KAFKA_CFG_PROCESS_ROLES=broker,controller
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:${PORT_2},CONTROLLER://:${CONTROLLER_PROT_2}
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://${LISTENER_2}
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@${CONTROLLER_1},2@${CONTROLLER_2},3@${CONTROLLER_3}
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - BITNAMI_DEBUG=true
+    volumes:
+      - kafka_2_data:/bitnami/kafka
+    network_mode: host
+  
+  kafka-3:
+    image: docker.io/bitnami/kafka:3.3
+    container_name: kafka-3
+    ports:
+      - ${PORT_3}:${PORT_3}
+    environment:
+      - KAFKA_ENABLE_KRAFT=true
+      - KAFKA_BROKER_ID=3
+      - KAFKA_KRAFT_CLUSTER_ID=${CLUSTER_ID}
+      - KAFKA_CFG_PROCESS_ROLES=broker,controller
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:${PORT_3},CONTROLLER://:${CONTROLLER_PROT_3}
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://${LISTENER_3}
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@${CONTROLLER_1},2@${CONTROLLER_2},3@${CONTROLLER_3}
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - BITNAMI_DEBUG=true
+    volumes:
+      - kafka_3_data:/bitnami/kafka
+    network_mode: host
+
+volumes:
+  kafka_1_data:
+    driver: local
+  kafka_2_data:
+    driver: local
+  kafka_3_data:
+    driver: local
