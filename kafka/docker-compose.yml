@@ -17,7 +17,6 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://${LISTENER_1}
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@${CONTROLLER_1},2@${CONTROLLER_2},3@${CONTROLLER_3}
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - BITNAMI_DEBUG=true
     volumes:
       - kafka_1_data:/bitnami/kafka
     network_mode: host
@@ -38,7 +37,6 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://${LISTENER_2}
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@${CONTROLLER_1},2@${CONTROLLER_2},3@${CONTROLLER_3}
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - BITNAMI_DEBUG=true
     volumes:
       - kafka_2_data:/bitnami/kafka
     network_mode: host
@@ -59,7 +57,6 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://${LISTENER_3}
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@${CONTROLLER_1},2@${CONTROLLER_2},3@${CONTROLLER_3}
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - BITNAMI_DEBUG=true
     volumes:
       - kafka_3_data:/bitnami/kafka
     network_mode: host
