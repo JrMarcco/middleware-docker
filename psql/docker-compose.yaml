@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: jrmarcco
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: integration_test
+    volumes:
+      - ./data:/var/lib/postgresql
