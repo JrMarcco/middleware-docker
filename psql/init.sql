@@ -1,5 +1,5 @@
-drop table if exists "integration_test".public."simple_struct";
-create table if not exists "integration_test".public."simple_struct"
+drop table if exists "simple_struct";
+create table if not exists "simple_struct"
 (
     "id"               bigint        not null,
     "bool"             smallint      not null,
