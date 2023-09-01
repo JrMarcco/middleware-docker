@@ -2,8 +2,8 @@ drop table if exists "simple_struct";
 create table if not exists "simple_struct"
 (
     "id"               bigint        not null,
-    "bool"             smallint      not null,
-    "bool_ptr"         smallint,
+    "bool"             boolean       not null,
+    "bool_ptr"         boolean,
     "int"              int           not null,
     "int_ptr"          int,
     "int8"             smallint      not null,
