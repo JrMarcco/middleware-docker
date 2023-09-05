@@ -2,6 +2,8 @@ services:
   nginx:
     container_name: nginx
     image: nginx:latest
+    environment:
+      - TZ=Asia/Shanghai
     volumes:
       - ./conf.d:/etc/nginx/conf.d
     network_mode: "host"
