@@ -5,6 +5,8 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
+      - ./http_proxy_params:/etc/nginx/http_proxy_params
+      - ./https_proxy_params:/etc/nginx/https_proxy_params
       - ./conf.d:/etc/nginx/conf.d
       - ./ssl_cert:/etc/nginx/ssl_cert
-    network_mode: "host"
+    network_mode: host
