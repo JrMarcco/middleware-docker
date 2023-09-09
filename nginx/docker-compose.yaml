@@ -6,4 +6,5 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ./conf.d:/etc/nginx/conf.d
+      - ./ssl_cert:/etc/nginx/ssl_cert
     network_mode: "host"
