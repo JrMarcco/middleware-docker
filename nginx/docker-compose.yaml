@@ -9,4 +9,5 @@ services:
       - ./https_proxy_params:/etc/nginx/https_proxy_params
       - ./conf.d:/etc/nginx/conf.d
       - ./ssl_cert:/etc/nginx/ssl_cert
+      - ./html:/etc/nginx/html
     network_mode: host
