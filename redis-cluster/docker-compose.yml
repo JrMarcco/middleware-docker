@@ -1,7 +1,6 @@
-version: "3.9"
 services:
   redis-node-0:
-    image: bitnami/redis-cluster:5.0.14
+    image: bitnami/redis-cluster:${VERSION}
     container_name: redis-node-0
     volumes:
       - redis-cluster_data-0:/bitnami/redis/data
@@ -17,7 +16,7 @@ services:
       - ${NODE_BUS_PORT_0}:${NODE_BUS_PORT_0}
 
   redis-node-1:
-    image: bitnami/redis-cluster:5.0.14
+    image: bitnami/redis-cluster:${VERSION}
     container_name: redis-node-1
     volumes:
       - redis-cluster_data-1:/bitnami/redis/data
@@ -33,7 +32,7 @@ services:
       - ${NODE_BUS_PORT_1}:${NODE_BUS_PORT_1}
 
   redis-node-2:
-    image: bitnami/redis-cluster:5.0.14
+    image: bitnami/redis-cluster:${VERSION}
     container_name: redis-node-2
     volumes:
       - redis-cluster_data-2:/bitnami/redis/data
@@ -49,7 +48,7 @@ services:
       - ${NODE_BUS_PORT_2}:${NODE_BUS_PORT_2}
 
   redis-node-3:
-    image: bitnami/redis-cluster:5.0.14
+    image: bitnami/redis-cluster:${VERSION}
     container_name: redis-node-3
     volumes:
       - redis-cluster_data-3:/bitnami/redis/data
@@ -65,7 +64,7 @@ services:
       - ${NODE_BUS_PORT_3}:${NODE_BUS_PORT_3}
 
   redis-node-4:
-    image: bitnami/redis-cluster:5.0.14
+    image: bitnami/redis-cluster:${VERSION}
     container_name: redis-node-4
     volumes:
       - redis-cluster_data-4:/bitnami/redis/data
@@ -81,7 +80,7 @@ services:
       - ${NODE_BUS_PORT_4}:${NODE_BUS_PORT_4}
 
   redis-node-5:
-    image: bitnami/redis-cluster:5.0.14
+    image: bitnami/redis-cluster:${VERSION}
     container_name: redis-node-5
     volumes:
       - redis-cluster_data-5:/bitnami/redis/data
