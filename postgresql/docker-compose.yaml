@@ -6,7 +6,7 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: jrmarcco
-      POSTGRES_PASSWORD: example
-      POSTGRES_DB: integration_test
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
     volumes:
       - ./data:/var/lib/postgresql
