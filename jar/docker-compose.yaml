@@ -1,0 +1,29 @@
+services:
+  app:
+    container_name: app
+    restart: always
+    image: openjdk:17
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1024M
+        reservations:
+          memory: 1024M
+    # 工作目录
+    working_dir: /home/app-workspace
+    volumes:
+      - ./jar:/home/app-workspace/jar
+      - ./logs:/home/app-workspace/logs
+      - /etc/localtime:/etc/localtime
+      - ./tessdata:/home/app-workspace/tessdata
+    ports:
+      - "8080:8080"
+    # 启动容器后执行的命令
+    entrypoint: [ "bash", "-c", "java -Duser.timezone=Asia/Shanghai -jar jar/app.jar --spring.profiles.active=test"] 
+    # 网络
+    networks:
+      - common-net
+networks:
+  common-net:
+    external: true
