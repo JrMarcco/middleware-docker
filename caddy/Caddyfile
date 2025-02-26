@@ -1,0 +1,7 @@
+jrmarcco.cn {
+    root * /srv/jrmarcco.cn
+
+    file_server {
+        index index.html
+    }
+}
