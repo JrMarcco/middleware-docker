@@ -1,7 +1,9 @@
-jrmarcco.cn {
-    root * /srv/jrmarcco.cn
-
-    file_server {
-        index index.html
+(common) {
+    encode gzip zstd
+    header {
+        -Server
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
     }
 }
+
+import /etc/caddy/conf.d/*.conf
