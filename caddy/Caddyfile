@@ -1,4 +1,7 @@
 (common) {
+    tls {
+        protocols tls1.3
+    }
     encode gzip zstd
     header {
         -Server

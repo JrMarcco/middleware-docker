@@ -7,7 +7,13 @@ services:
       - "443:443"
       - "443:443/udp"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./conf:/etc/caddy      # Caddyfiles
       - ./site:/srv            # site's static files
       - ./data:/data           # TLS certificates and other important assets
-      - ./config:/config       # configuration 
+      - ./config:/config       # configurations
+      - ./log:/var/log         # logs
+    networks:
+      - common-net
+networks:
+  common-net:
+    external: true
