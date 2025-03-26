@@ -1,17 +1,9 @@
 services:
-  redis_1:
+  redis:
     image: 'bitnami/redis:latest'
     ports:
-      - "63790:6379"
+      - "6379:6379"
     environment:
-      - REDIS_PASSWORD='util'
+      - ALLOW_EMPTY_PASSWORD=true
     volumes:
-      - './data/redis_1:/bitnami/data'
-  redis_2:
-    image: 'bitnami/redis:latest'
-    ports:
-      - "63791:6379"
-    environment:
-      - REDIS_PASSWORD='util'
-    volumes:
-      - './data/redis_2:/bitnami/data'
+      - './data:/bitnami/data'

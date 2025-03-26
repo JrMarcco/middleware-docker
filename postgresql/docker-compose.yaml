@@ -1,12 +1,13 @@
 services:
   db:
-    image: postgres:latest
+    image: bitnami/postgresql:latest
     restart: always
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: jrmarcco
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      POSTGRESQL_USERNAME: <username>
+      POSTGRESQL_PASSWORD: <password>
+      POSTGRESQL_DATABASE: postgres
+      ALLOW_EMPTY_PASSWORD: flase
     volumes:
-      - ./data:/var/lib/postgresql
+      - ./data:/bitnami/postgresql
